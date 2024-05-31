@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlagueCrowUI
+  m_Controller: {fileID: 9100000, guid: da53673566040b040831720c8073a3e8, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 065a116bf0c902e4fae01290e52b448f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 69f32cf62acf9f84c8b88502910fbf91, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9c82a53092f6f5944b42a098f5ce5672, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 62755dbc2c42b7e4a909ed8b0cf87dd9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8bd05d15fe8af704b909944a6878a4d3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e4a07cc7c9e924b4088eea7d6292eaf9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 951d91fad54f4e847b2d608067cbccce, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7f934ca1fbf7b6b449e86001cf0ea611, type: 2}

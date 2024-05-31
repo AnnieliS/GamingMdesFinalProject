@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TeethWalker
+  m_Controller: {fileID: 9100000, guid: a65015c5eec9a9349bb93488eb40b0e1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 40a3b7cc1d7112a4cbc6017873c9ea3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 65562b493a560d7479c8e411e11a6b9f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 519c71b20b3e4e746aa32953182ab81f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2d8416a31720ce04498e88fc589fd03e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 63f3a7c968a41f143b4a0dd68df2b2e4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cf17e20398877fd4a8cc494ef1b3b53c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9bda5e831ff44fc4bb6ac4db7ad34355, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c4245c63d3104b04198a1475d851ad98, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b5b8ccb4816b98044b602ea071ff2fbe, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: deae95ccaa75ddf4a97cbedaaa9a07ca, type: 2}

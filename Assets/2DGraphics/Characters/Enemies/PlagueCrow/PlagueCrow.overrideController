@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlagueCrow
+  m_Controller: {fileID: 9100000, guid: a65015c5eec9a9349bb93488eb40b0e1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 40a3b7cc1d7112a4cbc6017873c9ea3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1232408b24a6f5f488aec9abde02f9f8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 519c71b20b3e4e746aa32953182ab81f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d07509c9f9c1422459d5a7be6ff13797, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 63f3a7c968a41f143b4a0dd68df2b2e4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 595692b148227a148a3f575eebc6bd4c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9bda5e831ff44fc4bb6ac4db7ad34355, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9bd9c66ecbe1c7040baa10a84b17106b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b5b8ccb4816b98044b602ea071ff2fbe, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 81d4db78d833e014799405b8b28873cd, type: 2}
