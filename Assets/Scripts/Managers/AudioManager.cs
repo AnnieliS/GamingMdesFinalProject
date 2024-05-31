@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
         if (soundClip != null)
         {
             audioPlayer.clip = soundClip;
+            audioPlayer.Play();
         }
         else
         Debug.Log("no clip");
