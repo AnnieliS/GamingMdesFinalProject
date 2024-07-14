@@ -143,7 +143,7 @@ public class DialogueManager : MonoBehaviour
 
         // reset portrait, layout, and speaker
         displayNameText.text = "???";
-        portraitAnimator.Play("default");
+        portraitAnimator.Play("portrait_placeholder");
         // layoutAnimator.Play("right");
 
         ContinueStory();
@@ -343,6 +343,7 @@ public class DialogueManager : MonoBehaviour
     private void DisplayChoices() 
     {
         List<Choice> currentChoices = currentStory.currentChoices;
+        Debug.Log("current choices: " + currentChoices.Count);
 
         // defensive check to make sure our UI can support the number of choices coming in
         if (currentChoices.Count > choices.Length)

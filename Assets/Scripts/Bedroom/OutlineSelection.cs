@@ -40,7 +40,7 @@ public class OutlineSelection : MonoBehaviour
         // Highlight
         if (highlight != null)
         {
-            Debug.Log(highlight.gameObject.GetComponent<Outline>());
+            // Debug.Log(highlight.gameObject.GetComponent<Outline>());
             if (highlight.gameObject.GetComponent<Outline>())
             {
                 highlight.gameObject.GetComponent<Outline>().enabled = false;
@@ -48,7 +48,7 @@ public class OutlineSelection : MonoBehaviour
             highlight = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.Log(Physics.Raycast(ray, out raycastHit));
+        // Debug.Log(Physics.Raycast(ray, out raycastHit));
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) //Make sure you have EventSystem in the hierarchy before using EventSystem
         {
             highlight = raycastHit.transform;
@@ -68,7 +68,7 @@ public class OutlineSelection : MonoBehaviour
             }
             else if (highlight.CompareTag("BedroomComputerMonitor"))
             {
-                Debug.Log("monitor");
+                // Debug.Log("monitor");
             }
             else
             {
@@ -99,7 +99,7 @@ public class OutlineSelection : MonoBehaviour
 
             else if (highlight.gameObject.name == "MonitorPlayButton")
             {
-                LevelLoader.GetInstance().LoadNextLevel();
+                LevelLoader.GetInstance().LoadGame();
             }
 
             if (selection)

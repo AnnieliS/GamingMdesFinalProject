@@ -7,8 +7,9 @@ public class PortalTrigger : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("temp")]
-    [SerializeField] GameObject nextLevelPlaceholder;
+    [Header("Next Level")]
+    [SerializeField] string teleportSceneName;
+    [SerializeField] string teleportToKey;
 
     private bool playerInRange;
 
@@ -16,7 +17,6 @@ public class PortalTrigger : MonoBehaviour
     {
         playerInRange = false;
         visualCue.SetActive(false);
-        nextLevelPlaceholder.SetActive(false);
     }
 
     private void Update()
@@ -27,7 +27,11 @@ public class PortalTrigger : MonoBehaviour
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
-                LevelLoader.GetInstance().LoadNextLevel();
+                if (teleportToKey != null)
+                    GameManager.GetInstance().SetNextPortal(teleportToKey);
+                else
+                    GameManager.GetInstance().SetNextPortal("playerInit");
+                LevelLoader.GetInstance().LoadLevelByName(teleportSceneName);
                 Debug.Log("interact");
 
             }
@@ -35,7 +39,6 @@ public class PortalTrigger : MonoBehaviour
         }
         else
         {
-            nextLevelPlaceholder.SetActive(false);
             visualCue.SetActive(false);
         }
     }

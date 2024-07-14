@@ -13,9 +13,11 @@ public class AudioManager : MonoBehaviour
     {
         if (instance != null)
         {
+            Destroy(this.gameObject);
             Debug.LogWarning("Found more than one Audio Manager in the scene");
         }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public static AudioManager GetInstance()
@@ -41,5 +43,13 @@ public class AudioManager : MonoBehaviour
         else
         Debug.Log("no clip");
         
+    }
+
+    public void PauseBGM(){
+        audioPlayer.Pause();
+    }
+
+    public void ResumeBGM(){
+        audioPlayer.Play();
     }
 }

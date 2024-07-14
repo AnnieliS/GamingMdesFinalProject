@@ -7,14 +7,15 @@ public class InkExternalFunctions
 {
     public void Bind(Story story, Animator emoteAnimator)
     {
-        // story.BindExternalFunction("playEmote", (string emoteName) => PlayEmote(emoteName, emoteAnimator));
-        story.BindExternalFunction("killPlayer" ,() =>  KillPlayer());
+        story.BindExternalFunction("playEmote", (string emoteName) => PlayEmote(emoteName, emoteAnimator));
+        story.BindExternalFunction("showRobiButton", () => ShowRobiButton());
+        // story.BindExternalFunction("killPlayer" ,() =>  KillPlayer());
         story.BindExternalFunction("changeEnemyAnim", (string enemy, int anim) => ChangeEnemyAnimation(enemy, anim));
     }
 
     public void Unbind(Story story)
     {
-        // story.UnbindExternalFunction("playEmote");
+        story.UnbindExternalFunction("playEmote");
         // story.UnbindExternalFunction("changeAttackChance");
         // story.UnbindExternalFunction("changeEnemyAttackChance");
         story.UnbindExternalFunction("changeEnemyAnim");
@@ -24,7 +25,7 @@ public class InkExternalFunctions
     {
         if (emoteAnimator != null)
         {
-            emoteAnimator.Play(emoteName);
+            emoteAnimator.SetTrigger(emoteName);
         }
         else
         {
@@ -43,6 +44,10 @@ public class InkExternalFunctions
         if(tempObject == null) return;
        tempObject.GetComponent<EnemyBehaviour>().SelectAnimation(anim);
 
+    }
+
+    public void ShowRobiButton(){
+        RobiDialogue.GetInstance().ShowRobiButton();
     }
 
 }

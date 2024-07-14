@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    // [Header("Camera")]
+    // [SerializeField] Camera playerCamera;
+
+    [Header("PlayerObj")]
+    [SerializeField] GameObject player;
     [Header("Camera Location")]
     [SerializeField] GameObject toFollow;
     [SerializeField] float posXoffset;
@@ -45,6 +50,12 @@ public class CameraControl : MonoBehaviour
     {
 
         CameraLocation();
+    }
+    
+    private void Update() {
+        if(player != null){
+            this.transform.position = player.transform.position;
+        }
     }
 
 

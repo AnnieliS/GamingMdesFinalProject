@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float walkSpeed = 1f;
     [SerializeField] float runSpeed = 3f;
+    [SerializeField] float jumpCooldown = 0.3f;
+    [SerializeField] float jumpForce = 2f;
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
 
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private static PlayerMovement instance;
 
     bool canMove = true;
+    bool readyToJump = true;
     bool switched = false;
 
     private void Awake()
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         moveSpeed = walkSpeed;
+        animator.SetTrigger("idle");
     }
 
     public static PlayerMovement GetInstance()
@@ -107,6 +111,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void PressedJump(InputAction.CallbackContext context)
+    {
+        if (readyToJump)
+        {
+            readyToJump = false;
+
+            Jump();
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+
     public void RunToggle(InputAction.CallbackContext context)
     {
         if (moveSpeed == walkSpeed)
@@ -153,6 +169,20 @@ public class PlayerMovement : MonoBehaviour
     public void PlayerDie()
     {
         animator.SetTrigger("death");
+    }
+
+    private void Jump()
+    {
+        // reset y velocity
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        // animator.SetTrigger("Jump");
+    }
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 
 

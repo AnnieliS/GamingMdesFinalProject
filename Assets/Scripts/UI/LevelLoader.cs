@@ -8,11 +8,18 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] Animator transition;
     [SerializeField] float animationTime;
     [Header("Level Attributes")]
-    [SerializeField] AudioClip levelBGM;
+    [SerializeField] AudioClip[] levelBGM;
+    [Header("Robi's Canvas")]
+    [SerializeField] GameObject robiCanvasLevelEnd;
+    [SerializeField] GameObject robiCanvasLevelStart;
     [Header("Parameters")]
     [SerializeField] bool enterAnimation;
     [SerializeField] bool playableLevel = false;
-    [SerializeField] string playerInitTransformTag = "playerInit";
+    [SerializeField] bool hasRobi = false;
+    [SerializeField] GameObject toTurnOff;
+    string playerInitTransformTag = "playerInit";
+
+    AsyncOperation asyncOperation;
 
     GameObject loadCanvas;
 
@@ -27,7 +34,7 @@ public class LevelLoader : MonoBehaviour
         instance = this;
     }
 
-     public static LevelLoader GetInstance()
+    public static LevelLoader GetInstance()
     {
         return instance;
     }
@@ -37,43 +44,120 @@ public class LevelLoader : MonoBehaviour
         loadCanvas = this.gameObject.transform.GetChild(0).gameObject;
         loadCanvas.SetActive(enterAnimation);
         InitilizeLevel();
+        if (hasRobi)
+        {
+            StartCoroutine(RobiLevelStart());
+        }
     }
 
     private void InitilizeLevel()
     {
         if (playableLevel)
         {
+            playerInitTransformTag = GameManager.GetInstance().GetNextPortal();
             PlayerMovement.GetInstance().gameObject.transform.position = GameObject.FindGameObjectWithTag(playerInitTransformTag).transform.position;
         }
         GameManager.GetInstance().SetDefaultMouse();
         StartCoroutine(LoadSound());
     }
 
-    IEnumerator LoadSound(){
+    IEnumerator LoadSound()
+    {
         yield return new WaitForSeconds(0.2f);
         if (levelBGM != null)
         {
             Debug.Log(AudioManager.GetInstance().name);
             Debug.Log(AudioManager.GetInstance());
-            AudioManager.GetInstance().SwitchBGM(levelBGM);
+            if (levelBGM.Length == 1)
+                AudioManager.GetInstance().SwitchBGM(levelBGM[0]);
+            else
+            {
+                int rand = Random.Range(0, levelBGM.Length);
+                AudioManager.GetInstance().SwitchBGM(levelBGM[rand]);
+
+            }
         }
 
     }
 
-   
+    IEnumerator RobiLevelStart()
+    {
+        yield return new WaitForSeconds(animationTime);
+        if (robiCanvasLevelStart != null)
+        {
+            robiCanvasLevelStart.SetActive(true);
+        }
+    }
 
+
+    // no robi next level
     public void LoadNextLevel()
     {
         GameManager.GetInstance().HideCursor();
         loadCanvas.SetActive(true);
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1, null));
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+    public void LoadLevelByName(string nextSceneName)
+    {
+        Debug.Log(nextSceneName);
+        GameManager.GetInstance().HideCursor();
+        loadCanvas.SetActive(true);
+        // int nextLevelIndex = SceneManager.GetSceneByPath(nextSceneName).buildIndex;
+        // Debug.Log(nextLevelIndex);
+        StartCoroutine(LoadLevel(-1, nextSceneName));
+    }
+
+    //Robi at the end of the level
+    public void LoadGame()
+    {
+        GameManager.GetInstance().SetDefaultMouse();
+        // GameManager.GetInstance().HideCursor();
+        // asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadYourAsyncScene("02_OverWorld"));
+        robiCanvasLevelEnd.SetActive(true);
+    }
+
+    IEnumerator LoadYourAsyncScene(string sceneName)
+    {
+        // The Application loads the Scene in the background as the current Scene runs.
+        // This is particularly good for creating loading screens.
+        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+        asyncOperation.allowSceneActivation = false;
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    public void PressRobiButton()
+    {
+        StartCoroutine(StartLevel());
+
+    }
+
+    IEnumerator StartLevel()
+    {
+        GameManager.GetInstance().HideCursor();
+        loadCanvas.SetActive(true);
+        transition.SetTrigger("start");
+        yield return new WaitForSeconds(animationTime);
+        asyncOperation.allowSceneActivation = true;
+    }
+
+    IEnumerator LoadLevel(int levelIndex, string nextSceneName)
     {
         transition.SetTrigger("start");
         yield return new WaitForSeconds(animationTime);
-        SceneManager.LoadScene(levelIndex);
+        if (levelIndex == -1)
+            SceneManager.LoadScene(nextSceneName);
+        else
+            SceneManager.LoadScene(levelIndex);
     }
 
     public void BackToRoom()
@@ -87,6 +171,10 @@ public class LevelLoader : MonoBehaviour
     {
         transition.SetTrigger("start");
         yield return new WaitForSeconds(animationTime);
-        SceneManager.LoadScene("Bedroom");
+        SceneManager.LoadScene("01_Bedroom");
+    }
+
+    public void TurnOffGameObject(){
+        toTurnOff.SetActive(false);
     }
 }

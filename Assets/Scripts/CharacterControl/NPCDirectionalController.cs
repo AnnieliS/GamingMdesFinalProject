@@ -13,6 +13,7 @@ public class NPCDirectionalController : MonoBehaviour
 
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        animator.SetTrigger("idle");
     }
 
     private void LateUpdate()
@@ -46,7 +47,7 @@ public class NPCDirectionalController : MonoBehaviour
             //front animation
             animationDirection = new Vector2(0f, 1f);
 
-        animator.SetFloat("moveX", animationDirection.x);
-        animator.SetFloat("moveY", animationDirection.y);
+        // animator.SetFloat("moveX", animationDirection.x);
+        // animator.SetFloat("moveY", animationDirection.y);
 }
 }

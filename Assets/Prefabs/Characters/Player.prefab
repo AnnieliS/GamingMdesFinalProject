@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 5955974447065024799}
   - component: {fileID: 5805601647024550375}
   - component: {fileID: 6810187595176660013}
-  - component: {fileID: 7966066131873217696}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -39,7 +38,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7227028775968319236}
-  - {fileID: 3672511617604518699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2437414915156778529
@@ -147,6 +145,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 79c26574-3a5c-48cd-866e-5a442b19a770
     m_ActionName: Default/Run[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c73797a9-155e-46ef-9025-e8344211d433
+    m_ActionName: Default/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -166,6 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 10
+  jumpCooldown: 0.3
+  jumpForce: 2
   animator: {fileID: 251857145770042281}
   spriteRenderer: {fileID: 7184429052428420445}
   rb: {fileID: 7151810975775580011}
@@ -283,76 +287,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &7966066131873217696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2355328796867754827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f429c6ab449b4e4438d9b0bbf4e70047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &3241054257402960728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3672511617604518699}
-  - component: {fileID: 4080056155378042532}
-  m_Layer: 0
-  m_Name: CameraPivot
-  m_TagString: CameraPivot
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3672511617604518699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3241054257402960728}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4467769341581590688}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4080056155378042532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3241054257402960728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9422515cf906388409f8ea81dcdd72da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toFollow: {fileID: 3241054257402960728}
-  posXoffset: 2.17
-  posYoffset: 1.33
-  posZoffset: 0
-  cameraSpeed: 650
-  minY: 0
-  maxY: 360
-  minX: -10
-  maxX: 20
-  clampX: 1
-  clampY: 0
-  minFOV: 60
-  maxFOV: 100
-  zoomSensitivity: 25
 --- !u!1 &7718813616280676156
 GameObject:
   m_ObjectHideFlags: 0
