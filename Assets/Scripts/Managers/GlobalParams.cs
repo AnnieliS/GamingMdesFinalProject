@@ -9,7 +9,7 @@ public class GlobalParams
     public Dictionary<string, string> portals = new Dictionary<string, string>();
 
     public Dictionary<string, bool> bedRoomParams = new Dictionary<string, bool>();
-
+    
     public GlobalParams()
     {
         roomRobiDialogueIndex.Add("01_Bedroom", 0);

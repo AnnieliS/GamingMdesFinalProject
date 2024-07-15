@@ -26,6 +26,7 @@ public class OutlineSelection : MonoBehaviour
 {
     [SerializeField] Collider playButtonCollider;
     [SerializeField] Animator cameraAnim;
+    [SerializeField] GameObject creditsCanvas;
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
@@ -101,6 +102,11 @@ public class OutlineSelection : MonoBehaviour
             {
                 LevelLoader.GetInstance().LoadGame();
             }
+
+            else if (highlight.gameObject.name == "Book_open"){
+                creditsCanvas.SetActive(true);
+                highlight.gameObject.GetComponent<Outline>().enabled = false;
+            }   
 
             if (selection)
             {

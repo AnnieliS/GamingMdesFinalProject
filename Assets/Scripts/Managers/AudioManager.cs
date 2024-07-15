@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable] public class VoiceLines : SerializableDictionary<string, AudioClip> { }
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] bool amIWorking;
     AudioSource audioPlayer;
+    [Header("Robi Talking")]
+    [SerializeField] AudioSource robiVoice;
+    [SerializeField] VoiceLines robiLines;
+    
+
 
     private static AudioManager instance;
 
@@ -51,5 +57,9 @@ public class AudioManager : MonoBehaviour
 
     public void ResumeBGM(){
         audioPlayer.Play();
+    }
+
+    public void PlayRobiLine(string line){
+
     }
 }
