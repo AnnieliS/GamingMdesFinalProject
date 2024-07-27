@@ -10173,6 +10173,10 @@ PrefabInstance:
       propertyPath: levelBGM
       value: 
       objectReference: {fileID: 8300000, guid: eb3248bbe63fa924aa72e75d45aaeeba, type: 3}
+    - target: {fileID: 5634117038479783438, guid: 8c544d1f5d58e594fa47eb61d3ed451f, type: 3}
+      propertyPath: levelBGM.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bd4258d2d003c94281c41310f5b95c7, type: 3}
     - target: {fileID: 6121595776900899253, guid: 8c544d1f5d58e594fa47eb61d3ed451f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.677788

@@ -22696,6 +22696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4998751219143153758, guid: 08a59261f7a5be44b9e851779d107187, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: 471f2b385f8cd3a44b9ee47f3881162b, type: 3}
     - target: {fileID: 5773401196246094197, guid: 08a59261f7a5be44b9e851779d107187, type: 3}
       propertyPath: m_Size.x
       value: 2.06

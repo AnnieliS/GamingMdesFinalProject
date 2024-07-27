@@ -5,6 +5,7 @@ EXTERNAL showRobiButton()
 EXTERNAL robiSpeak(line)
 EXTERNAL pauseBGM()
 EXTERNAL resumeBGM()
+EXTERNAL enterPuzzle(puzzle)
 
 VAR NPC_ANS_01 = ""
 VAR NPC_ANS_02 = ""
