@@ -32,7 +32,7 @@ public class GlobalParams
 
 
         bedRoomParams.Add("DIYFire", false);
-        bedRoomParams.Add("wifiConnected", true);
+        bedRoomParams.Add("wifiConnected", false);
 
     }
 
