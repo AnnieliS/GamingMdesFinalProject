@@ -32,6 +32,7 @@ TagManager:
   - PlayerEyes
   - wifiConnected
   - ratemeTV
+  - kickStreamTV
   layers:
   - Default
   - TransparentFX

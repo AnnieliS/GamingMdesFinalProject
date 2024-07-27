@@ -1,0 +1,1 @@
+lollll what a baddie#speaker:hatejews#portrait:dia_avatar_statue

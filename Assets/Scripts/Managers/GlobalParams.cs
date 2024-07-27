@@ -28,10 +28,11 @@ public class GlobalParams
         portals.Add("diyPortal", "diyPortal");
         portals.Add("ratemePortal", "ratemeTV");
         portals.Add("ratemeTV", "playerInit");
+        portals.Add("kickStreamPortal", "kickStreamTV");
 
 
         bedRoomParams.Add("DIYFire", false);
-        bedRoomParams.Add("wifiConnected", false);
+        bedRoomParams.Add("wifiConnected", true);
 
     }
 

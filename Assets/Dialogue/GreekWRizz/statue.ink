@@ -1,0 +1,1 @@
+W RIZZ#speaker:german1488 #portrait:dia_avatar_statue

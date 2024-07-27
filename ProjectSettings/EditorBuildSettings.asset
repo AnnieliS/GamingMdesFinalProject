@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05_Utub.unity
     guid: dea27a68924a0e748ab05139f8ebfb5a
+  - enabled: 1
+    path: Assets/Scenes/06_Streams_Kick.unity
+    guid: 147f3453d2ab42b42a17b29b86de658a
   m_configObjects: {}
