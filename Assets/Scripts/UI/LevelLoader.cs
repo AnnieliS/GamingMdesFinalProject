@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] float animationTime;
     [Header("Level Attributes")]
     [SerializeField] AudioClip[] levelBGM;
+    [SerializeField] bool startWithBGM = true;
     [Header("Robi's Canvas")]
     [SerializeField] GameObject robiCanvasLevelEnd;
     [SerializeField] GameObject robiCanvasLevelStart;
@@ -70,10 +71,14 @@ public class LevelLoader : MonoBehaviour
             Debug.Log(AudioManager.GetInstance());
             if (levelBGM.Length == 1)
                 AudioManager.GetInstance().SwitchBGM(levelBGM[0]);
+                if(startWithBGM)
+                AudioManager.GetInstance().ResumeBGM();
             else
             {
                 int rand = Random.Range(0, levelBGM.Length);
                 AudioManager.GetInstance().SwitchBGM(levelBGM[rand]);
+                if(startWithBGM)
+                AudioManager.GetInstance().ResumeBGM();
 
             }
         }
@@ -115,6 +120,7 @@ public class LevelLoader : MonoBehaviour
         // GameManager.GetInstance().HideCursor();
         // asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         StartCoroutine(LoadYourAsyncScene("02_OverWorld"));
+        GameManager.GetInstance().SetNextPortal("playerInit");
         robiCanvasLevelEnd.SetActive(true);
     }
 

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Emote Animator")]
+    [Header("Optionals")]
     [SerializeField] private Animator emoteAnimator;
+    [SerializeField] private GameObject puzzle = null;
+    UnityEvent puzzleCompleteFunction;
 
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
@@ -30,7 +33,7 @@ public class DialogueTrigger : MonoBehaviour
             if (InputManager.GetInstance().GetInteractPressed()) 
             {
                 Debug.Log("interact");
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, emoteAnimator);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, emoteAnimator, puzzle);
             }
         }
         else 

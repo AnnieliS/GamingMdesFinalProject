@@ -8431,6 +8431,7 @@ GameObject:
   - component: {fileID: 1077561396}
   - component: {fileID: 1077561395}
   - component: {fileID: 1077561398}
+  - component: {fileID: 1077561399}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8505,13 +8506,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077561394}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.022782573, y: -0.9527489, z: 0.073887795, w: -0.2937533}
-  m_LocalPosition: {x: -9.567863, y: 4.868433, z: 24.042805}
+  m_LocalRotation: {x: -0.02843694, y: -0.97263885, z: 0.071901284, w: -0.21907794}
+  m_LocalPosition: {x: -9.49, y: 3.1, z: 24.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.762, y: 154.719, z: 1.381}
 --- !u!114 &1077561398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8628,6 +8629,18 @@ MonoBehaviour:
   - assemblyQualifiedName: RLProCustomTexture, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_AfterStackBundles: []
+--- !u!114 &1077561399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077561394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5fa950f360ab14ab5e8a73976d3918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1106761847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8971,7 +8984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77eeedc41533a340a62f2d72b5a2c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualCue: {fileID: 891569093}
+  visualCue:
+  - {fileID: 891569093}
   teleportSceneName: 03_Gegloo
   teleportToKey: blackpillPortal
 --- !u!65 &1226543692
@@ -10158,13 +10172,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowQuitConfirmation
       objectReference: {fileID: 0}
-    - target: {fileID: 1390138534223782033, guid: 0dd2b0cb0d200d343b9ad5d76cd6b4bd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 268
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390138534223782033, guid: 0dd2b0cb0d200d343b9ad5d76cd6b4bd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 168
+    - target: {fileID: 263928709919929287, guid: 0dd2b0cb0d200d343b9ad5d76cd6b4bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1881904470606110097, guid: 0dd2b0cb0d200d343b9ad5d76cd6b4bd, type: 3}
       propertyPath: m_AnchorMax.x

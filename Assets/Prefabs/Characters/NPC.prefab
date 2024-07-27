@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6712423860410483907}
   - component: {fileID: 8940511246696104960}
-  - component: {fileID: 302642626448552985}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -57,22 +56,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1.14, z: 0.5}
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!208 &302642626448552985
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000519241182976676}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.29, y: 0.58, z: 1.31}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &2753148941472642883
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 8704524583099548520}
   emoteAnimator: {fileID: 8808231862275697566}
+  puzzle: {fileID: 0}
   inkJSON: {fileID: 4900000, guid: 4c10144e5eaf1cd4a92e863c01e762d7, type: 3}
 --- !u!1 &5655185158104116320
 GameObject:

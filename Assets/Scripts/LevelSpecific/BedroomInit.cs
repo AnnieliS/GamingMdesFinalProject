@@ -8,6 +8,8 @@ public class BedroomInit : MonoBehaviour
 //    Transform[] changeableObjects;
     void Start()
     {
+        AudioManager.GetInstance().StartManYell();
+        AudioManager.GetInstance().PauseBGM();
         // changeableObjects = changeableItemsContainer.GetComponentsInChildren<GameObject>();
         foreach (Transform child in changeableItemsContainer){
             string tag = child.tag;
@@ -15,5 +17,9 @@ public class BedroomInit : MonoBehaviour
         }
         
     }
+    private void OnDestroy() {
+        AudioManager.GetInstance().StopManYell();
+    }
+    
 
 }

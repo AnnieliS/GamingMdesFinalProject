@@ -33,6 +33,9 @@ public class DialogueManager : MonoBehaviour
     private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
     private AudioSource audioSource;
 
+
+    
+
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
@@ -132,14 +135,14 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator) 
+    public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator, GameObject puzzle = null) 
     {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
         dialogueVariables.StartListening(currentStory);
-        inkExternalFunctions.Bind(currentStory, emoteAnimator);
+        inkExternalFunctions.Bind(currentStory, emoteAnimator, puzzle);
 
         // reset portrait, layout, and speaker
         displayNameText.text = "???";

@@ -5,17 +5,24 @@ using Ink.Runtime;
 
 public class InkExternalFunctions
 {
-    public void Bind(Story story, Animator emoteAnimator)
+    public void Bind(Story story, Animator emoteAnimator, GameObject puzzle = null )
     {
         story.BindExternalFunction("playEmote", (string emoteName) => PlayEmote(emoteName, emoteAnimator));
         story.BindExternalFunction("showRobiButton", () => ShowRobiButton());
+        story.BindExternalFunction("robiSpeak", (string line) => RobiSpeak(line));
+        story.BindExternalFunction("pauseBGM",() => PauseBGM());
+        story.BindExternalFunction("resumeBGM", () => ResumeBGM());
         // story.BindExternalFunction("killPlayer" ,() =>  KillPlayer());
         story.BindExternalFunction("changeEnemyAnim", (string enemy, int anim) => ChangeEnemyAnimation(enemy, anim));
+        story.BindExternalFunction("enterPuzzle", (string key) => EnterPuzzle(puzzle, key));
     }
 
     public void Unbind(Story story)
     {
         story.UnbindExternalFunction("playEmote");
+        story.UnbindExternalFunction("robiSpeak");
+        story.UnbindExternalFunction("showRobiButton");
+        story.UnbindExternalFunction("pauseBGM");
         // story.UnbindExternalFunction("changeAttackChance");
         // story.UnbindExternalFunction("changeEnemyAttackChance");
         story.UnbindExternalFunction("changeEnemyAnim");
@@ -48,6 +55,21 @@ public class InkExternalFunctions
 
     public void ShowRobiButton(){
         RobiDialogue.GetInstance().ShowRobiButton();
+    }
+
+    public void RobiSpeak(string line){
+        AudioManager.GetInstance().PlayRobiLine(line);
+    }
+
+    public void PauseBGM(){
+        AudioManager.GetInstance().PauseBGM();
+    }
+    public void ResumeBGM(){
+        AudioManager.GetInstance().ResumeBGM();
+    }
+
+    public void EnterPuzzle(GameObject puzzle, string key = ""){
+                PipePuzzleManager.GetInstance().StartPuzzle(puzzle, bedroomParamKey: key);
     }
 
 }

@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: emote_grumble
+  m_Controller: {fileID: 9100000, guid: cacbd687fe0ad2f4aa53d9f128973d96, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8cff5575ea42b7c46b1236e032e77908, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e21f2893a6b5fbe4b875231e087e94ec, type: 2}

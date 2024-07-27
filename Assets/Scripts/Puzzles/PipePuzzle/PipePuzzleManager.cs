@@ -28,6 +28,7 @@ public class PipePuzzleManager : MonoBehaviour
     int attackChanceIncrease;
     int attackChanceDec;
     bool didWin = false;
+    string bedroomKey = "";
 
     private void Awake()
     {
@@ -46,18 +47,24 @@ public class PipePuzzleManager : MonoBehaviour
         return instance;
     }
 
-    public void StartPuzzle(GameObject puzzle, PuzzleCollider activator, GameObject[] puzzleActivating)
+    public void StartPuzzle(GameObject puzzle,
+                            PuzzleCollider activator = null,
+                            GameObject[] puzzleActivating = null,
+                            string bedroomParamKey = "")
     {
-        GameManager.GetInstance().DisableMouseChange();
-        puzzleActivator = activator;
-        attackChanceIncrease = activator.playerAttackChanceIncrease;
+        // GameManager.GetInstance().DisableMouseChange();
+        // puzzleActivator = activator;
+        // attackChanceIncrease = activator.playerAttackChanceIncrease;
         this.puzzleActivating = puzzleActivating;
-        totalActivators = puzzleActivating.Length;
-        attackChanceDec = activator.enemyAttackChanceDecrease;
-        for (int i = 0; i < puzzle.transform.childCount; i++)
+        bedroomKey = bedroomParamKey;
+        if (puzzleActivating != null)
+            totalActivators = puzzleActivating.Length;
+        // attackChanceDec = activator.enemyAttackChanceDecrease;
+        // the get child(0) is a really bad solution for the container. maybe fix it someday TODO
+        for (int i = 0; i < puzzle.transform.GetChild(1).childCount; i++)
         {
-            if (puzzle.transform.GetChild(i).name == "Pipes")
-                PipesHolder = puzzle.transform.GetChild(i).gameObject;
+            if (puzzle.transform.GetChild(1).GetChild(i).name == "Pipes")
+                PipesHolder = puzzle.transform.GetChild(1).GetChild(i).gameObject;
         }
         WinText.SetActive(false);
         totalPipes = PipesHolder.transform.childCount;
@@ -109,6 +116,8 @@ public class PipePuzzleManager : MonoBehaviour
     }
 
 
+
+    /// All the effects of completing the puzzle
     private IEnumerator DelayPuzzleOff()
     {
         yield return new WaitForSeconds(turnOffDelay);
@@ -121,8 +130,15 @@ public class PipePuzzleManager : MonoBehaviour
                     toActivate.SetActive(true);
                 }
             }
-            puzzleActivator.isSolved = true;
-            puzzleActivator.gameObject.GetComponentInChildren<Animator>().SetBool("finishedPuzzle", true);
+            if (puzzleActivator)
+            {
+                puzzleActivator.isSolved = true;
+                puzzleActivator.gameObject.GetComponentInChildren<Animator>().SetBool("finishedPuzzle", true);
+            }
+            if (bedroomKey != null)
+            {
+                GameManager.GetInstance().ChangeBedroom(bedroomKey, true);
+            }
         }
         CameraControl.GetInstance().TurnOnCameraControl();
         PlayerMovement.GetInstance().ResumeMovement();

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -147,7 +147,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
+ #region AudioFunctions
+ #endregion
 
 #region get game manager params
 

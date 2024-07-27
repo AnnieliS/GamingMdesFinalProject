@@ -5,18 +5,29 @@ using UnityEngine;
 public class PortalTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
+    [SerializeField] private GameObject[] visualCue;
 
     [Header("Next Level")]
     [SerializeField] string teleportSceneName;
     [SerializeField] string teleportToKey;
+    Outline outline;
 
     private bool playerInRange;
 
     private void Awake()
     {
         playerInRange = false;
-        visualCue.SetActive(false);
+        foreach (GameObject cue in visualCue)
+        {
+            cue.SetActive(false);
+        }
+    }
+
+    private void Start()
+    {
+        outline = GetComponentInChildren<Outline>();
+        if (outline != null)
+            outline.enabled = false;
     }
 
     private void Update()
@@ -24,7 +35,12 @@ public class PortalTrigger : MonoBehaviour
         if (playerInRange)
         {
 
-            visualCue.SetActive(true);
+            foreach (GameObject cue in visualCue)
+            { cue.SetActive(true); }
+            if (outline != null)
+            {
+                outline.enabled = true;
+            }
             if (InputManager.GetInstance().GetInteractPressed())
             {
                 if (teleportToKey != null)
@@ -39,7 +55,10 @@ public class PortalTrigger : MonoBehaviour
         }
         else
         {
-            visualCue.SetActive(false);
+            foreach (GameObject cue in visualCue) { cue.SetActive(false); }
+            if (outline != null)
+                outline.enabled = false;
+
         }
     }
 

@@ -25,8 +25,8 @@ using UnityEngine.EventSystems;
 public class OutlineSelection : MonoBehaviour
 {
     [SerializeField] Collider playButtonCollider;
-    [SerializeField] Animator cameraAnim;
     [SerializeField] GameObject creditsCanvas;
+    [SerializeField] Animator cameraAnim;
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
@@ -100,13 +100,24 @@ public class OutlineSelection : MonoBehaviour
 
             else if (highlight.gameObject.name == "MonitorPlayButton")
             {
+                AudioManager.GetInstance().StopManYell();
                 LevelLoader.GetInstance().LoadGame();
             }
 
-            else if (highlight.gameObject.name == "Book_open"){
+            else if (highlight.gameObject.name == "Book_open")
+            {
                 creditsCanvas.SetActive(true);
                 highlight.gameObject.GetComponent<Outline>().enabled = false;
-            }   
+            }
+            else if (highlight.gameObject.name == "Router")
+            {
+                LevelLoader.GetInstance().LoadLevelByName("01_Tutorial");
+            }
+
+            else if (highlight.gameObject.name == "Dial")
+            {
+                MoveCamera("monitorToDefault");
+            }
 
             if (selection)
             {
@@ -124,6 +135,12 @@ public class OutlineSelection : MonoBehaviour
             }
         }
 
+    }
+
+    public void MoveCamera(string trigger)
+    {
+        Debug.Log("click");
+        cameraAnim.SetTrigger(trigger);
     }
 
 }

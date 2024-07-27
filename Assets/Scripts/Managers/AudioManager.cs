@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using System;
 
-[System.Serializable] public class VoiceLines : SerializableDictionary<string, AudioClip> { }
+// [Serializable] public class VoiceLines : SerializableDictionary<string, AudioClip> { }
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] bool amIWorking;
     AudioSource audioPlayer;
-    [Header("Robi Talking")]
+    [Header("More Sounds")]
     [SerializeField] AudioSource robiVoice;
-    [SerializeField] VoiceLines robiLines;
+    [SerializeField] AudioSource manYell;
+    // public VoiceLines robiLines;
+
+
+    // load robi's lines into a dictionary with the name of the file as key
+
+    Dictionary<string, AudioClip> robiLines = new Dictionary<string, AudioClip>();
+    Object[] temp;
+
     
 
 
@@ -35,6 +44,13 @@ public class AudioManager : MonoBehaviour
     {
         audioPlayer = GetComponent<AudioSource>();
         Debug.Log("audio " + audioPlayer);
+
+
+        //put robi lines into dictionary
+        temp = Resources.LoadAll("Robi", typeof(AudioClip));
+        foreach (AudioClip line in temp){
+            robiLines.Add(line.name, line);
+        }
     }
 
 
@@ -44,7 +60,6 @@ public class AudioManager : MonoBehaviour
         if (soundClip != null)
         {
             audioPlayer.clip = soundClip;
-            audioPlayer.Play();
         }
         else
         Debug.Log("no clip");
@@ -60,6 +75,19 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlayRobiLine(string line){
+        AudioClip lineToPlay;
+        lineToPlay = robiLines[line];
+        if(lineToPlay != null){
+            robiVoice.clip = lineToPlay;
+            robiVoice.Play();
+        }
+    }
 
+    public void StartManYell(){
+        manYell.Play();
+    }
+
+    public void StopManYell(){
+        manYell.Pause();
     }
 }

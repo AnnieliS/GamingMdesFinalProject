@@ -29,6 +29,9 @@ TagManager:
   - blackpillPortal
   - diyPortal
   - DIYFire
+  - PlayerEyes
+  - wifiConnected
+  - ratemeTV
   layers:
   - Default
   - TransparentFX

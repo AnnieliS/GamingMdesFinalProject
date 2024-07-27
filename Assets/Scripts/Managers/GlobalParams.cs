@@ -9,7 +9,7 @@ public class GlobalParams
     public Dictionary<string, string> portals = new Dictionary<string, string>();
 
     public Dictionary<string, bool> bedRoomParams = new Dictionary<string, bool>();
-    
+
     public GlobalParams()
     {
         roomRobiDialogueIndex.Add("01_Bedroom", 0);
@@ -26,9 +26,12 @@ public class GlobalParams
         portals.Add("OverworldToUtub", "utubPortal");
         portals.Add("blackpillPortal", "blackpillPortal");
         portals.Add("diyPortal", "diyPortal");
+        portals.Add("ratemePortal", "ratemeTV");
+        portals.Add("ratemeTV", "playerInit");
 
 
         bedRoomParams.Add("DIYFire", false);
+        bedRoomParams.Add("wifiConnected", false);
 
     }
 
