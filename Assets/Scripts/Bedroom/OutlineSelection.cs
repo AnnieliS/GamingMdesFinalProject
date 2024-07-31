@@ -63,13 +63,9 @@ public class OutlineSelection : MonoBehaviour
                 {
                     Outline outline = highlight.gameObject.AddComponent<Outline>();
                     outline.enabled = true;
-                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
-                    highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
+                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.white;
+                    highlight.gameObject.GetComponent<Outline>().OutlineWidth = 2.0f;
                 }
-            }
-            else if (highlight.CompareTag("BedroomComputerMonitor"))
-            {
-                // Debug.Log("monitor");
             }
             else
             {
@@ -92,17 +88,18 @@ public class OutlineSelection : MonoBehaviour
             {
                 selection.gameObject.GetComponent<Outline>().enabled = false;
             }
-            if (highlight.gameObject.name == "Monitor")
+            if (highlight.gameObject.name == "MonitorPlayButton")
+            {
+                Debug.Log("play button monitor");
+                AudioManager.GetInstance().StopManYell();
+                LevelLoader.GetInstance().LoadGame();
+            }
+            else if (highlight.gameObject.name == "Monitor")
             {
                 playButtonCollider.enabled = true;
                 cameraAnim.SetTrigger("ToMonitor");
             }
 
-            else if (highlight.gameObject.name == "MonitorPlayButton")
-            {
-                AudioManager.GetInstance().StopManYell();
-                LevelLoader.GetInstance().LoadGame();
-            }
 
             else if (highlight.gameObject.name == "Book_open")
             {
@@ -117,6 +114,10 @@ public class OutlineSelection : MonoBehaviour
             else if (highlight.gameObject.name == "Dial")
             {
                 MoveCamera("monitorToDefault");
+            }
+
+            else if(highlight.gameObject.name == "Door"){
+                Application.Quit();
             }
 
             if (selection)

@@ -61,12 +61,11 @@ public class RobiDialogue : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
+            Debug.LogWarning("Found more than one Robi Dialogue Manager in the scene");
         }
         instance = this;
 
-        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
-        inkExternalFunctions = new InkExternalFunctions();
+
 
         audioSource = this.gameObject.AddComponent<AudioSource>();
         currentAudioInfo = defaultAudioInfo;
@@ -105,12 +104,12 @@ public class RobiDialogue : MonoBehaviour
         }
         else
         {
-            if (GameManager.GetInstance().IsFirstBedroom())
-            {
-                InitilizeCurrentDialogue();
-                GameManager.GetInstance().EnteredBedroom();
-            }
-            else LevelLoader.GetInstance().TurnOffGameObject();
+            InitilizeCurrentDialogue();
+            // if (GameManager.GetInstance().IsFirstBedroom())
+            // {
+            //     GameManager.GetInstance().EnteredBedroom();
+            // }
+            // else LevelLoader.GetInstance().TurnOffGameObject();
         }
 
 
@@ -118,6 +117,8 @@ public class RobiDialogue : MonoBehaviour
 
     private void InitilizeCurrentDialogue()
     {
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+        inkExternalFunctions = new InkExternalFunctions();
         UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
         inkIndex = GameManager.GetInstance().GetRobiDialogue(scene.name);
         if (inkJSON != null && robiAnim != null)
@@ -395,28 +396,28 @@ public class RobiDialogue : MonoBehaviour
             choices[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(SelectFirstChoice());
+        // StartCoroutine(SelectFirstChoice());
     }
 
-    private IEnumerator SelectFirstChoice()
-    {
-        // Event System requires we clear it first, then wait
-        // for at least one frame before we set the current selected object.
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
-    }
+    // private IEnumerator SelectFirstChoice()
+    // {
+    //     // Event System requires we clear it first, then wait
+    //     // for at least one frame before we set the current selected object.
+    //     EventSystem.current.SetSelectedGameObject(null);
+    //     yield return new WaitForEndOfFrame();
+    //     EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+    // }
 
-    public void MakeChoice(int choiceIndex)
-    {
-        if (canContinueToNextLine)
-        {
-            currentStory.ChooseChoiceIndex(choiceIndex);
-            // NOTE: The below two lines were added to fix a bug after the Youtube video was made
-            InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
-            ContinueStory();
-        }
-    }
+    // public void MakeChoice(int choiceIndex)
+    // {
+    //     if (canContinueToNextLine)
+    //     {
+    //         currentStory.ChooseChoiceIndex(choiceIndex);
+    //         // NOTE: The below two lines were added to fix a bug after the Youtube video was made
+    //         InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
+    //         ContinueStory();
+    //     }
+    // }
 
     public Ink.Runtime.Object GetVariableState(string variableName)
     {

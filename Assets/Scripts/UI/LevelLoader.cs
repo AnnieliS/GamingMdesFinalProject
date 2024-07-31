@@ -116,6 +116,7 @@ public class LevelLoader : MonoBehaviour
     //Robi at the end of the level
     public void LoadGame()
     {
+        Debug.Log("load game");
         GameManager.GetInstance().SetDefaultMouse();
         // GameManager.GetInstance().HideCursor();
         // asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);

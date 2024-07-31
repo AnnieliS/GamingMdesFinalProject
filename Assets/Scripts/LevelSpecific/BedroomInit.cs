@@ -5,11 +5,22 @@ using UnityEngine;
 public class BedroomInit : MonoBehaviour
 {
     [SerializeField] Transform changeableItemsContainer;
+    [SerializeField] GameObject openingCanvas;
     //    Transform[] changeableObjects;
     void Start()
     {
         AudioManager.GetInstance().StartManYell();
-        if (GameManager.GetInstance().IsFirstBedroom()) { AudioManager.GetInstance().PauseBGM(); }
+        if (GameManager.GetInstance().IsFirstBedroom() == true)
+        {
+            AudioManager.GetInstance().PauseBGM();
+            openingCanvas.SetActive(true);
+        }
+        else
+        {
+            openingCanvas.SetActive(false);
+            AudioManager.GetInstance().ResumeBGM();
+        }
+        GameManager.GetInstance().EnteredBedroom();
         // changeableObjects = changeableItemsContainer.GetComponentsInChildren<GameObject>();
         foreach (Transform child in changeableItemsContainer)
         {
